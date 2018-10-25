@@ -1,1 +1,2 @@
 # pyscaf
+scaffold python project
