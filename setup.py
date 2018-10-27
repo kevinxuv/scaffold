@@ -29,6 +29,7 @@ setup(
     install_requires=[
         'click==7.0',
         'jinja2==2.10',
-        'gitpython==2.1.11'
+        'gitpython==2.1.11',
+        'virtualenv==16.0.0'
     ],
 )

@@ -4,7 +4,7 @@ import shutil
 
 import click
 
-from pyscaf.core import create_project_dir, git_init
+from pyscaf.core import create_project_dir, git_init, create_virtualenv
 from pyscaf.exc import ProjectDirAlreadyExist
 
 
@@ -15,17 +15,27 @@ def run():
     description = click.prompt(
         'write a description of your project', default='none', type=str)
     git = click.prompt('init git or not?', default=False, type=bool)
+    venv = click.prompt('create virtualenv or not?', default=False, type=bool)
+
     project_root_dir = os.path.join(os.getcwd(), '{}'.format(name))
     try:
         if os.path.exists(project_root_dir):
             raise ProjectDirAlreadyExist('project folder already exist')
         create_project_dir(project_root_dir, name, description)
         if git:
-            print git
             git_init(project_root_dir)
+        if venv:
+            venv_path = create_virtualenv(project_root_dir)
+            click.echo(
+                click.style(
+                    'success to create project virtualenv path: ' + venv_path,
+                    fg='blue'
+                )
+            )
+
         click.echo(
             click.style(
-                'success to scaffold project {}'.format(name), 
+                'Finish scaffolding project {}...'.format(name),
                 fg='blue',
                 bold=True
             )
