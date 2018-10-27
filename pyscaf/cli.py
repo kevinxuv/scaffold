@@ -23,8 +23,24 @@ def create_project_dir(name, description):
 def run():
     name = click.prompt('give your project a name', default='unknown', type=str)
     description = click.prompt('write a description of your project', default='none', type=str)
-    create_project_dir(name, description)
-    click.echo('finish scaffold project {}'.format(name))
+    try:
+        create_project_dir(name, description)
+        click.echo(
+            click.style(
+                'success to scaffold project {}'.format(name), 
+                fg='blue',
+                bold=True
+            )
+        )
+    except Exception as e:
+        click.echo(
+            click.style(
+                '[ERROR] failed to scaffold project: {}'.format(str(e)), 
+                bg='red',
+                bold=True
+            )
+        )
+        click.Abort()
 
 
 if __name__ == '__main__':
