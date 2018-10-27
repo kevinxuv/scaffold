@@ -1,14 +1,28 @@
 # -*- coding: utf-8 -*-
+import os
+import shutil
+
 import click
 
-from pyscaf.core import create_project_dir
+from pyscaf.core import create_project_dir, git_init
+from pyscaf.exc import ProjectDirAlreadyExist
+
 
 @click.command()
 def run():
-    name = click.prompt('give your project a name', default='unknown', type=str)
-    description = click.prompt('write a description of your project', default='none', type=str)
+    name = click.prompt(
+        'give your project a name', default='unknown', type=str)
+    description = click.prompt(
+        'write a description of your project', default='none', type=str)
+    git = click.prompt('init git or not?', default=False, type=bool)
+    project_root_dir = os.path.join(os.getcwd(), '{}'.format(name))
     try:
-        create_project_dir(name, description)
+        if os.path.exists(project_root_dir):
+            raise ProjectDirAlreadyExist('project folder already exist')
+        create_project_dir(project_root_dir, name, description)
+        if git:
+            print git
+            git_init(project_root_dir)
         click.echo(
             click.style(
                 'success to scaffold project {}'.format(name), 
@@ -24,7 +38,10 @@ def run():
                 bold=True
             )
         )
-        click.Abort()
+        if isinstance(e, ProjectDirAlreadyExist):
+            return
+        if os.path.exists(project_root_dir):
+            shutil.rmtree(project_root_dir)
 
 
 if __name__ == '__main__':
