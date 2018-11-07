@@ -40,7 +40,7 @@ def scaf(name='unknown', description='none', git=False, venv=False):
     project_root_dir = os.path.join(os.getcwd(), '{}'.format(name))
     try:
         if os.path.exists(project_root_dir):
-            raise ProjectDirAlreadyExist('project folder already exist')
+            raise ProjectDirAlreadyExist('project directory already exist: {}'.format(project_root_dir))
         create_project_dir(project_root_dir, name, description)
         if git:
             git_init(project_root_dir)

@@ -14,10 +14,10 @@ def run():
     git = click.prompt('init git or not?', default=False, type=bool)
     venv = click.prompt('create virtualenv or not?', default=False, type=bool)
     try:
-        scaf(name=name, description=description, git=git, venv=venv)
+        project_root_dir = scaf(name=name, description=description, git=git, venv=venv)
         click.echo(
             click.style(
-                'Finish scaffolding project {}...'.format(name),
+                'Finish scaffolding project {} at {}'.format(name, project_root_dir),
                 fg='blue',
                 bold=True
             )
