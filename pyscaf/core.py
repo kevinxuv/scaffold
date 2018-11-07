@@ -9,6 +9,7 @@ from pyscaf import current_path
 
 env = Environment(loader=FileSystemLoader(current_path + '/templates'))
 
+
 def create_project_dir(project_root_dir, name, description):
     project_package_dir = project_root_dir + '/{}'.format(name)
     os.makedirs(project_package_dir)
