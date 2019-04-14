@@ -1,4 +1,4 @@
-jinja2==2.10
+jinja2==2.10.1
 click==7.0
 gitpython==2.1.11
 virtualenv==16.0.0
