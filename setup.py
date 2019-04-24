@@ -28,7 +28,7 @@ setup(
     ],
     install_requires=[
         'click==7.0',
-        'jinja2==2.10',
+        'jinja2==2.10.1',
         'gitpython==2.1.11',
         'virtualenv==16.0.0',
         'flask==1.0.2'
