@@ -1,3 +1,3 @@
-# pyscaf
+# pyscaffold
 
 scaffold python project
