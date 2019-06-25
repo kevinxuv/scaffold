@@ -3,7 +3,7 @@ import logging
 
 from flask import Flask, request, jsonify
 
-from pyscaf.core import scaf
+from pyscaffold.core import scaffold
 
 app = Flask(__name__)
 logger = logging.getLogger(__name__)
@@ -14,11 +14,11 @@ def hello():
     return 'hello world!'
 
 
-@app.route('/scaf', methods=['POST'])
+@app.route('/scaffold', methods=['POST'])
 def scaffold():
     try:
         data = request.get_json()
-        project_root_dir = scaf(**data)
+        project_root_dir = scaffold(**data)
         return jsonify(dict(status=1, data=project_root_dir, error=None))
     except Exception as e:
         logger.exception(e)

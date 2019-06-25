@@ -2,7 +2,7 @@
 
 import click
 
-from pyscaf.core import scaf
+from pyscaffold.core import scaffold
 
 
 @click.command()
@@ -14,7 +14,8 @@ def run():
     git = click.prompt('init git or not?', default=False, type=bool)
     venv = click.prompt('create virtualenv or not?', default=False, type=bool)
     try:
-        project_root_dir = scaf(name=name, description=description, git=git, venv=venv)
+        project_root_dir = scaffold(
+            name=name, description=description, git=git, venv=venv)
         click.echo(
             click.style(
                 'Finish scaffolding project {} at {}'.format(name, project_root_dir),

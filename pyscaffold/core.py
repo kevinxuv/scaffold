@@ -6,8 +6,8 @@ import git
 from jinja2 import Environment, FileSystemLoader
 from virtualenv import create_environment
 
-from pyscaf import current_path
-from pyscaf.exc import ProjectDirAlreadyExist
+from pyscaffold import current_path
+from pyscaffold.exc import ProjectDirAlreadyExist
 
 env = Environment(loader=FileSystemLoader(current_path + '/templates'))
 
@@ -36,7 +36,7 @@ def create_virtualenv(project_root_dir):
     return venv_path
 
 
-def scaf(name='unknown', description='none', git=False, venv=False):
+def scaffold(name='unknown', description='none', git=False, venv=False):
     project_root_dir = os.path.join(os.getcwd(), '{}'.format(name))
     try:
         if os.path.exists(project_root_dir):

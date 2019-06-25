@@ -2,21 +2,21 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='pyscaf',
+    name='pyscaffold',
     version='0.1.0',
-    url='https://github.com/kevinxuv/pyscaf',
+    url='https://github.com/kevinxuv/pyscaffold',
     description='scaffold python project',
     author='kevin.xu.v',
     license='BSD',
     packages=find_packages(exclude=('tests', 'tests.*')),
-    package_data={'pyscaf':['templates/*']},
+    package_data={'pyscaffold': ['templates/*']},
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        'console_scripts': ['scaf = pyscaf.cli:run']
+        'console_scripts': ['scaffold = pyscaffold.cli:run']
     },
     classifiers=[
-        'Framework :: scaf',
+        'Framework :: scaffold',
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
