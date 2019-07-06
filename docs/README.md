@@ -1,4 +1,3 @@
 # pyscaffold
 
 scaffold python project
-
