@@ -2,7 +2,7 @@
 
 import click
 
-from pyscaffold.core import scaffold
+from scaffold.core import scaffold
 
 
 @click.command()

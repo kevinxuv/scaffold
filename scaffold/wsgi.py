@@ -3,7 +3,7 @@ import logging
 
 from flask import Flask, request, jsonify
 
-from pyscaffold.core import scaffold
+from scaffold.core import scaffold
 
 app = Flask(__name__)
 logger = logging.getLogger(__name__)

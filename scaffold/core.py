@@ -6,8 +6,8 @@ import git
 from jinja2 import Environment, FileSystemLoader
 from virtualenv import create_environment
 
-from pyscaffold import current_path
-from pyscaffold.exc import ProjectDirAlreadyExist
+from scaffold import current_path
+from scaffold.exc import ProjectDirAlreadyExist
 
 env = Environment(loader=FileSystemLoader(current_path + '/templates'))
 

@@ -2,18 +2,18 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='pyscaffold',
+    name='scaffold',
     version='0.1.0',
-    url='https://github.com/kevinxuv/pyscaffold',
+    url='https://github.com/kevinxuv/scaffold',
     description='scaffold python project',
     author='kevin.xu.v',
     license='BSD',
     packages=find_packages(exclude=('tests', 'tests.*')),
-    package_data={'pyscaffold': ['templates/*']},
+    package_data={'scaffold': ['templates/*']},
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        'console_scripts': ['scaffold = pyscaffold.cli:run']
+        'console_scripts': ['scaffold = scaffold.cli:run']
     },
     classifiers=[
         'Framework :: scaffold',
