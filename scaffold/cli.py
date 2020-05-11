@@ -16,11 +16,10 @@ def run():
     description = click.prompt(
         '-> write a description of your project', default='none', type=str)
     git = click.prompt('-> init git or not?', default=False, type=bool)
-    venv = click.prompt('-> create virtualenv or not?', default=False, type=bool)
+    # venv = click.prompt('-> create virtualenv or not?', default=False, type=bool)
     click.echo(click.style('Start to scaffold project...', fg='blue', bold=True))
     try:
-        project_root_dir = scaffold(
-            name=name, description=description, git=git, venv=venv)
+        project_root_dir = scaffold(name=name, description=description, git=git)
         click.echo(
             click.style(
                 f'Finish scaffolding project {name} at {project_root_dir}',
