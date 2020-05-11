@@ -1,3 +1,3 @@
-# scaffold
+# Scaffold
 
-scaffold python project
+A command line tool to scaffold python project
