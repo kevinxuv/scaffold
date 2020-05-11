@@ -14,7 +14,7 @@ def run():
     name = click.prompt(
         '-> give your project a name', default='unknown', type=str)
     description = click.prompt(
-        '-> write a description of your project', default='none', type=str)
+        '-> write a description for your project', default='none', type=str)
     git = click.prompt('-> init git or not?', default=False, type=bool)
     # venv = click.prompt('-> create virtualenv or not?', default=False, type=bool)
     click.echo(click.style('Start to scaffold project...', fg='blue', bold=True))
