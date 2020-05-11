@@ -13,7 +13,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        'console_scripts': ['scaffold = scaffold.cli:run']
+        'console_scripts': ['scaf = scaffold.cli:run']
     },
     classifiers=[
         'Framework :: scaffold',
@@ -25,11 +25,12 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7'
     ],
     install_requires=[
         'click==7.0',
         'jinja2==2.10.1',
-        'gitpython==2.1.11',
+        'gitpython==3.1.2',
         'virtualenv==16.0.0',
         'flask==1.0.2'
     ],

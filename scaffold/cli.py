@@ -1,33 +1,39 @@
 # -*- coding: utf-8 -*-
+import logging
 
 import click
 
 from scaffold.core import scaffold
 
 
+logger = logging.getLogger(__name__)
+
+
 @click.command()
 def run():
     name = click.prompt(
-        'give your project a name', default='unknown', type=str)
+        '-> give your project a name', default='unknown', type=str)
     description = click.prompt(
-        'write a description of your project', default='none', type=str)
-    git = click.prompt('init git or not?', default=False, type=bool)
-    venv = click.prompt('create virtualenv or not?', default=False, type=bool)
+        '-> write a description of your project', default='none', type=str)
+    git = click.prompt('-> init git or not?', default=False, type=bool)
+    venv = click.prompt('-> create virtualenv or not?', default=False, type=bool)
+    click.echo(click.style('Start to scaffold project...', fg='blue', bold=True))
     try:
         project_root_dir = scaffold(
             name=name, description=description, git=git, venv=venv)
         click.echo(
             click.style(
-                'Finish scaffolding project {} at {}'.format(name, project_root_dir),
+                f'Finish scaffolding project {name} at {project_root_dir}',
                 fg='blue',
                 bold=True
             )
         )
     except Exception as e:
+        logger.exception(e)
         click.echo(
             click.style(
-                '[ERROR] failed to scaffold project: {}'.format(str(e)),
-                bg='red',
+                f'[ERROR] failed to scaffold project: {e}',
+                fg='red',
                 bold=True
             )
         )

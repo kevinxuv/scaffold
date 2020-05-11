@@ -16,11 +16,14 @@ def create_project_dir(project_root_dir, name, description):
     project_package_dir = project_root_dir + '/{}'.format(name)
     os.makedirs(project_package_dir)
     with open(project_package_dir + '/__init__.py', 'wb') as fh:
-        fh.write(env.get_template('__init__.py.jinja').render())
+        fh.write(env.get_template('__init__.py.jinja').render().encode())
     with open(project_root_dir + '/README.md', 'wb') as fh:
-        fh.write(env.get_template(
-            'README.md.jinja').render(project=name, description=description)
-                 )
+        fh.write(
+            env.get_template('README.md.jinja').render(
+                project=name,
+                description=description
+            ).encode()
+        )
     open(project_root_dir + '/requirements.txt', 'w+')
 
 
@@ -37,10 +40,10 @@ def create_virtualenv(project_root_dir):
 
 
 def scaffold(name='unknown', description='none', git=False, venv=False):
-    project_root_dir = os.path.join(os.getcwd(), '{}'.format(name))
+    project_root_dir = os.path.join(os.getcwd(), f'{name}')
     try:
         if os.path.exists(project_root_dir):
-            raise ProjectDirAlreadyExist('project directory already exist: {}'.format(project_root_dir))
+            raise ProjectDirAlreadyExist(f'project directory already exist: {project_root_dir}')
         create_project_dir(project_root_dir, name, description)
         if git:
             git_init(project_root_dir)
