@@ -32,6 +32,6 @@ setup(
         'jinja2==2.10.1',
         'gitpython==3.1.2',
         'virtualenv==20.0.20',
-        'flask==1.0.2'
+        'flask==2.3.2'
     ],
 )
